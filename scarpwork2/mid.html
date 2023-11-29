@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+    <link rel="stylesheet" href="midstyle.css">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-script src="./main.py"></py-script>
+    <py-config>
+        packages = [
+        "pandas",
+        "matplotlib",
+        "numpy",
+        "scipy",
+        "seaborn"
+        ]
+    </py-config>
+    <title>Finntastic</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"> <a href="./index.html"> Finntastic </a></div>
+
+            <ul class="links">
+                <li><a href="./hero.html"><i class="fa-regular fa-user" style="color: #1a0a53;"></i></a></li>
+                <li><a href="./mid.html"><i class="fa-solid fa-dumbbell" style="color: #1a0a53;"></i> </a></li>
+                <li> <a href="./music.html"><i class="fa-solid fa-music" style="color: #1a0a53;"></i></a></li>
+            </ul>
+
+            <a href="#" class="action_btn">Get Started</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars" style="color: #1a0a53;"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="./hero.html"><i class="fa-regular fa-user" style="color: #1a0a53;"></i> User</a></li>
+            <li><a href="./music.html"><i class="fa-solid fa-phone" style="color: #1a0a53;"></i> Call</a></li>
+            <li><a href="help"><i class="fa-solid fa-info" style="color: #1a0a53;"></i> Help</a></li>
+            <li><a href="#" class="action_btn">click me</a></li>
+        </div>
+    </header>
+    <main>
+        <section id="hero">
+            <h1>WEEK 5</h1>
+            
+            <div id="today"></div>  
+            <div id="next"></div>
+            <div id="please"></div>
+            <div id="output"></div>
+            <div id="csv"></div>
+
+            <div id="plot"></div>
+            <div id="bar"></div>
+            <div id="new_csv"></div>
+
+            <div id="circle"></div>
+
+            <div class="rings">
+                <div id="circle_two"></div>
+                <div id="circle_three"></div>
+                
+            </div>
+            <div class="line"></div>
+            <div id="circle_four"></div>
+            <div id="final_csv"></div>
+            <h1 class="Ltext">
+                Protein Consumption
+            </h1>
+            <div class="text_one">
+                <div id="graph_one"></div>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas, voluptates eaque recusandae placeat unde quo! Odio esse provident fuga maiores saepe. Ut recusandae aliquid eius qui adipisci corrupti maiores laboriosam.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas iure similique magni assumenda non cum sunt in! Veniam quam, excepturi omnis explicabo beatae magni tempore, voluptatum nulla veritatis ea molestias.
+                </p>
+            </div>
+            <h1 class="Ltext">
+                Calories Consumption
+            </h1>
+            <div class="text_two">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dignissimos autem consectetur aliquid fuga voluptates ratione voluptate cumque doloremque, quidem earum reprehenderit quae quia quos error, ducimus optio dolorum placeat.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto nesciunt laboriosam doloribus quasi obcaecati consequuntur, numquam iusto magnam veritatis maxime vel pariatur ex, similique ipsa? Corporis quod quis soluta optio!
+                </p>
+                <div id="graph_two"></div>
+            </div>
+            
+           <div class="help">
+            <div class="call_text">
+                <h2>
+                    Problems with your data?
+                </h2>
+                <p>
+                    Text us via <i class="fa-brands fa-whatsapp" style="color: #77bb41;"></i> on +31**********
+                </p>
+            </div>
+           </div>
+
+
+        </section>
+    </main>
+    <py-script> 
+        import pandas as pd 
+        import matplotlib.pyplot as plt
+        import numpy as np
+        from scipy import stats 
+        import seaborn as sns
+        from js import XMLHttpRequest
+        import pyodide
+        import warnings
+        from pyodide.http import open_url
+        from datetime import datetime, timedelta
+        from scipy.signal import butter, filtfilt, find_peaks
+
+        warnings.filterwarnings("ignore")
+
+        # API request
+        api_url = 'https://v1.nocodeapi.com/fintastic/fit/YwfrSRHvmFPemKCR/aggregatesDatasets?dataTypeName=calories_expended&timePeriod=30days&durationTime=daily'
+        # frist one
+        req = XMLHttpRequest.new()
+        req.open("GET", api_url, False)
+        req.send(None)
+
+        # CSV reading
+        url_content = open_url("https://raw.githubusercontent.com/elvis770/CSV/main/fintastic%20(3).csv")
+        df1 = pd.read_csv(url_content)
+        csv = Element('csv')
+        csv.write(df1.head())
+
+        # values reading
+        df1.shape
+        calories = df1['Calories']
+        fat = df1['Fat (g)']
+
+        # testing pyscript.write
+        pyscript.write("today","we finna go")
+
+        # fourth path mathplotlib regression graph
+        
+        import matplotlib.pyplot as plt
+        fig, ax = plt.subplots()
+
+        fig.set_facecolor('lightgray')
+
+        plt.scatter(calories, fat, marker='*', color='g')
+        
+        plt.xlabel('Calories')
+        plt.ylabel('Fat')
+        plt.title('calories vs fat scatter plot')
+
+
+        # new csv 
+        url_content = open_url("https://raw.githubusercontent.com/elvis770/CSV/main/sample_data.csv")
+        df = pd.read_csv(url_content)
+        new_csv = Element ('new_csv')
+        new_csv.write(df.head())
+
+        # Convert date column to DateTime
+        df['Date'] = pd.to_datetime(df['Date'])
+
+        # Group by date and sum values
+        summed_data = df.groupby('Date').sum().reset_index()
+
+        def get_day_of_week(date):
+            day_of_week = date.strftime('%A')  # %A returns the full day name
+            return day_of_week
+
+        # Apply the function to create a new 'DayOfWeek' column
+        summed_data['DayOfWeek'] =summed_data['Date'].apply(get_day_of_week)
+
+        # part two
+        desired_date = '2023-11-01'  # Example date
+
+        # Filter the DataFrame for the specific date
+        specific_date_data = df[df['Date'] == desired_date]
+
+        # Display the data for the specific date
+
+
+        # final section
+
+        import matplotlib.pyplot as plt
+
+        # Calculate the values for the ring chart
+        burned_calories = df['Burned Calories'].iloc[1]  # Access the first value
+        consumed_calories = df['Consumed Calories'].iloc[1] # Access the first value
+
+        # Calculate net calories (Consumed Calories - Burned Calories)
+        net_calories = consumed_calories - burned_calories
+
+        # Create a figure and set the figure size
+        plt.figure(figsize=(6, 4))
+
+        # Colors for the ring chart segments
+        colors = ['lightcoral', 'lightblue']
+
+        # Labels for the ring chart segments
+        labels = ['Calories: {:.1f}'.format(net_calories), 'Burned Calories: {:.1f}'.format(burned_calories)]
+
+        # Explode the second segment (Burned Calories)
+        explode = (0, 0)  # You can adjust the explosion factor as needed
+
+        # Create a pie chart with customized labels
+        plt.pie([net_calories, burned_calories], labels=labels, colors=colors, startangle=20, pctdistance=0.2, explode=explode)
+
+        # Draw a circle in the center to create a ring chart
+        center_circle = plt.Circle((0, 0), 0.70, fc='#000')
+        fig = plt.gcf()
+        fig.gca().add_artist(center_circle)
+
+        # Set the title
+        plt.title('Daily Overview')
+
+        # Show the plot
+        display(fig, target="circle")
+
+        # circle
+        burned_calories = df['Burned Calories'].loc[1]  # Access the first value
+        consumed_calories = df['Consumed Calories'].loc[1]  # Access the first value 
+
+        # Calculate net calories (Consumed Calories - Burned Calories)
+        net_calories = max(0, consumed_calories - burned_calories)
+
+        # Create a figure and set the figure size
+        plt.figure(figsize=(5, 5), facecolor='#000')
+
+        # Colors for the ring chart segments
+        colors = ['#1b2887', '#767ba3']
+
+        # Labels for the ring chart segments
+        labels = ['Consumed Calories: {:.1f}'.format(net_calories), 'Burned Calories: {:.1f}'.format(burned_calories)]
+
+        label_properties = {'fontsize': 12, 'fontweight': 'bold', 'color': 'white'}
+
+        # Explode the second segment (Burned Calories)
+        explode = (0, 0)  # You can adjust the explosion factor as needed
+
+        # Create a pie chart with customized labels
+        plt.pie([net_calories, burned_calories], colors=colors, startangle=20, pctdistance=0.2, explode=explode)
+
+        plt.legend(labels=labels,
+                loc="lower center",
+                bbox_to_anchor=(0.5,-0.1))
+
+        # Draw a circle in the center to create a ring chart
+        center_circle = plt.Circle((0, 0), 0.70, fc='#000')
+        fig = plt.gcf()
+        fig.gca().add_artist(center_circle)
+
+        # Show the plot
+        display(fig, target="circle_two")
+
+        # plot two 
+        # Calculate the values for the ring chart
+        goal_calories_in = 3217
+        consumed_calories = df['Consumed Calories'].loc[1]  # Access the first value
+        
+        # Calculate net calories (Consumed Calories - Burned Calories)
+        net_calories_in = max(0, goal_calories_in - consumed_calories)
+
+        # Create a figure and set the figure size
+        plt.figure(figsize=(5, 5), facecolor='none')
+
+        # Colors for the ring chart segments
+        colors = ['#F2F6EB', '#1b2887']  # Corrected the color code
+
+        # Labels for the ring chart segments
+        labels = ['Calories left: {:.1f}'.format(net_calories_in), 'Calories consumed: {:.1f}'.format(consumed_calories)]
+        # Explode the second segment (Burned Calories)
+        explode = (0, 0)  # You can adjust the explosion factor as needed
+
+        # Create a pie chart with customized labels
+        plt.pie([net_calories_in, consumed_calories], colors=colors, startangle=20, pctdistance=0.2, explode=explode)
+
+        plt.legend(labels=labels,
+                loc="lower center",
+                bbox_to_anchor=(0.5,-0.1))
+
+        # Draw a circle in the center to create a ring chart
+        center_circle = plt.Circle((0, 0), 0.70, fc='#000')
+        fig = plt.gcf()
+        fig.gca().add_artist(center_circle)
+
+        # Show the plot
+        display(fig, target="circle_three")
+
+        # Calculate the values for the ring chart
+        goal_calories_out = 2800
+        burned_calories = df['Burned Calories'].loc[1]  # Access the first value
+
+        # Calculate net calories (Consumed Calories - Burned Calories)
+        net_calories_out = goal_calories_out - burned_calories 
+
+        # Create a figure and set the figure size
+        plt.figure(figsize=(5, 5), facecolor='none')
+
+        # Colors for the ring chart segments
+        colors = ['#F2F6EB', '#767ba3']
+
+        # Labels for the ring chart segments
+        labels = ['Calories left: {:.1f}'.format(net_calories_out), 'Calories burned: {:.1f}'.format(burned_calories)]
+
+        # Explode the second segment (Burned Calories)
+        explode = (0, 0)  # You can adjust the explosion factor as needed
+
+        # Create a pie chart with customized labels
+        plt.pie([net_calories_out, burned_calories], colors=colors, startangle=20, pctdistance=0.2, explode=explode)
+
+        plt.legend(labels=labels,
+                loc="lower center",
+                bbox_to_anchor=(0.5,-0.1))
+
+
+        # Draw a circle in the center to create a ring chart
+        center_circle = plt.Circle((0, 0), 0.70, fc='#000')
+        fig = plt.gcf()
+        fig.gca().add_artist(center_circle)
+
+        # Show the plot
+        display(fig, target="circle_four")
+
+
+        # final CSV
+        # CSV reading
+        url_content = open_url("https://raw.githubusercontent.com/elvis770/CSV/main/fintastic%20(3).csv")
+        df2 = pd.read_csv(url_content)
+        final_csv = Element('final_csv')
+
+        final_csv.write(df2.head())
+
+        # Convert date column to DateTime
+        df2['Date'] = pd.to_datetime(df2['Date'])
+
+        # Group by date and sum values
+        merged_data = df2.groupby('Date').sum().reset_index()
+
+
+        cal_two = merged_data['Calories']
+
+
+        # Sample data (replace with your dataset)
+        data_one = (cal_two)
+
+        # Number of bootstrap samples
+        num_samples = 100
+
+        # Number of resampled data points in each sample
+        sample_size = len(cal_two)
+
+        # Store the means of the bootstrap samples
+        bootstrap_means = []
+
+        # Perform bootstrapping
+        # Perform bootstrapping
+        for _ in range(num_samples):
+            
+            # Resample the data with replacement
+            resampled_data = np.random.choice(cal_two, size=sample_size, replace=True)
+            
+            # Calculate the mean of the resampled data - 763.702380952381
+            resampled_mean = np.mean(resampled_data)
+            
+            #Calculate the standard deviation of the resampled data
+            #resampled_std = np.std(resampled_data)
+            
+            # Store the resampled mean
+            bootstrap_means.append(resampled_mean)
+
+        # Calculate the 95% confidence interval
+        confidence_interval = np.percentile(bootstrap_means, [2.5, 97.5])
+
+        # Normalize the histogram values by dividing by the total area
+        #hist, bins, _ = plt.hist(bootstrap_means, bins=30, density=True, alpha=0.8, color='#b3c6d0', label='Bootstrap Means')
+        #bin_width = bins[1] - bins[0]
+        mean_value=np.mean(bootstrap_means)
+        std_value=np.std(bootstrap_means)
+        normalized_bootstrap =(bootstrap_means-mean_value)/std_value
+
+        hist, bins, _ = plt.hist(normalized_bootstrap, bins=30, density=True, alpha=0.8, color='#b3c6d0', label='Bootstrap Means')
+        fig1, ax1 = plt.subplots()
+        plt.hist(normalized_bootstrap, density=True, alpha=0.8, color='#b3c6d0', label='Bootstrap Means')
+
+        # Plot the normalized histogram
+        #plt.bar(bins[:-1], normalized_bootstrap, align='center', alpha=0.4, color='#FF8C76', label='Normalized Bootstrap Means')
+        #plt.axvline(x=np.mean(cal_two), alpha=0.6, color='red', linestyle='dashed', linewidth=1, label='Original Mean')
+        plt.xlabel('Sample Means')
+        plt.ylabel('Probability Density')
+        plt.title('Normalized Bootstrap Distribution of Sample Means data by date')
+        plt.legend()
+
+
+        # Q-Q plot for HR data
+        fig9, ax9 = plt.subplots()
+
+        stats.probplot(normalized_bootstrap,dist="norm", plot=plt)
+        plt.title("Q-Q Plot")
+        
+
+        correlation_matrix = merged_data.corr()
+        plt.figure(figsize=(5, 5))
+        sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+        plt.title('Correlation Heatmap by Date')
+        
+        
+        num_bins = 8
+
+        ax1 = sns.histplot(cal_two,bins=num_bins,legend=True)
+        # visualize the mean, median and mode:
+        avg_cal = np.mean(cal_two) #calculate mean
+        med_cal = np.median(cal_two) #calculate median
+        #draw the lines:
+        ax1.axvline(avg_cal, color="b",ls ="--" )
+        ax1.axvline(med_cal, color="r",ls ="--" )
+
+        #calculate the mode:
+        # use numpy to extract the bins and counts values.
+        count, val = np.histogram(cal_two, bins=num_bins)
+        #find the value for which the count is the maximum:
+        mode_cal = val[np.argmax(count)]
+
+        #plot
+        ax1.axvline(mode_cal, color="k",ls ="--" )
+        ax1.legend(["Mean","Median","Mode"])
+        ax1.set_title("Histogram cal_two consumption data by date")
+
+        ax2 = sns.histplot(cal_two, bins=num_bins,kde=True, stat="probability", legend=True)
+        ax2.legend(["PDF","PMF"])
+        ax2.set_title("Calorie consumption probability data by date")
+
+        def probability_above_value(cal_two, min_cal):
+            # Calculate the mean and standard deviation of the data
+            mean_c = cal_two.mean()
+            std_dev_c = cal_two.std()
+            
+            # Calculate the probability using the cumulative distribution function (CDF)
+            probability_c = 1 - stats.norm.cdf(min_cal, loc=mean_c, scale=std_dev_c)
+            
+            return probability_c
+
+        # Selected value
+        min_cal = 3270
+
+        # Calculate the probability
+        prob_c = probability_above_value(cal_two, min_cal)
+
+        fats = merged_data['Fat (g)']
+
+        num_bins = 8
+
+        ax1 = sns.histplot(fats,bins=num_bins,legend=True)
+        # visualize the mean, median and mode:
+        avg_fat = np.mean(fats) #calculate mean
+        med_fat = np.median(fats) #calculate median
+        #draw the lines:
+        ax1.axvline(avg_fat, color="b",ls ="--" )
+        ax1.axvline(med_fat, color="r",ls ="--" )
+
+        #calculate the mode:
+        # use numpy to extract the bins and counts values.
+        count, val = np.histogram(fats, bins=num_bins)
+        #find the value for which the count is the maximum:
+        mode_fat = val[np.argmax(count)]
+        #plot
+        ax1.axvline(mode_fat, color="k",ls ="--" )
+        ax1.legend(["Mean","Median","Mode"])
+        ax1.set_title("Histogram fats consumption data by date")
+
+        ax2 = sns.histplot(fats,bins=num_bins,kde=True, stat="probability", legend=True)
+        ax2.legend(["PDF","PMF"])
+        ax2.set_title("Fats consumption probability data by date")
+
+        carbs = merged_data['Carbohydrates (g)']
+
+        num_bins = 15
+
+        ax1 = sns.histplot(carbs,bins=num_bins,legend=True)
+        # visualize the mean, median and mode:
+        avg_carbs = np.mean(carbs) #calculate mean
+        med_carbs = np.median(carbs) #calculate median
+        #draw the lines:
+        ax1.axvline(avg_carbs, color="b",ls ="--" )
+        ax1.axvline(med_carbs, color="r",ls ="--" )
+
+        #calculate the mode:
+        # use numpy to extract the bins and counts values.
+        count, val = np.histogram(carbs, bins=num_bins)
+        #find the value for which the count is the maximum:
+        mode_carbs = val[np.argmax(count)]
+        #plot
+        ax1.axvline(mode_carbs, color="k",ls ="--" )
+        ax1.legend(["Mean","Median","Mode"])
+        ax1.set_title("Histogram carbs consumption data by date")
+
+        ax2 = sns.histplot(carbs,bins=num_bins,kde=True, stat="probability", legend=True)
+        ax2.legend(["PDF","PMF"])
+        ax2.set_title("Carbs consumption probability data by date")
+
+        prot = merged_data['Protein (g)']
+
+        num_bins = 8
+
+        ax1 = sns.histplot(prot,bins=num_bins,legend=True)
+        # visualize the mean, median and mode:
+        avg_prot = np.mean(prot) #calculate mean
+        med_prot = np.median(prot) #calculate median
+        #draw the lines:
+        ax1.axvline(avg_prot, color="b",ls ="--" )
+        ax1.axvline(med_prot, color="r",ls ="--" )
+
+        #calculate the mode:
+        # use numpy to extract the bins and counts values.
+        count, val = np.histogram(prot, bins=num_bins)
+        #find the value for which the count is the maximum:
+        mode_prot = val[np.argmax(count)]
+        #plot
+        ax1.axvline(mode_prot, color="k",ls ="--" )
+        ax1.legend(["Mean","Median","Mode"])
+        ax1.set_title("Histogram protein consumption data by date")
+
+        ax2 = sns.histplot(prot,bins=num_bins,kde=True, stat="probability", legend=True)
+        ax2.legend(["PDF","PMF"])
+        ax2.set_title("Protein consumption probability data by date")
+
+        def probability_above_value(prot, min_prot):
+            # Calculate the mean and standard deviation of the data
+            mean_p = prot.mean()
+            std_dev_p = prot.std()
+            
+            # Calculate the probability using the cumulative distribution function (CDF)
+            probability_p = 1 - stats.norm.cdf(min_prot, loc=mean_p, scale=std_dev_p)
+            
+            return probability_p
+
+        weight=82
+        r_prot=2
+        # Selected value
+        min_prot = weight*r_prot
+
+        # Calculate the probability
+        prob_p = probability_above_value(prot, min_prot)
+
+        #cal_two in all macros 
+        mean_prot_cal=prot.mean()*4
+        mean_carb_cal=carbs.mean()*4
+        mean_fat_cal=fats.mean()*9
+
+        def get_day_of_week(date):
+            day_of_week = date.strftime('%A')  # %A returns the full day name
+            return day_of_week
+
+        # Apply the function to create a new 'DayOfWeek' column
+        merged_data['DayOfWeek'] =merged_data['Date'].apply(get_day_of_week)
+
+        # Calculate the end date (last date in the dataset)
+        end_date = merged_data['Date'].max()
+
+        # Calculate the start date (end date - 7 days)
+        start_date = end_date - timedelta(days=6)
+
+        # Filter the DataFrame for the last week
+        last_week_data = merged_data[(merged_data['Date'] >= start_date) & (merged_data['Date'] <= end_date)]
+        
+        # Selecting specific columns
+        selected_columns = ['Date', 'Protein (g)', 'Fat (g)', 'Carbohydrates (g)', 'DayOfWeek']
+
+        # Creating a new DataFrame with selected columns
+        new_table = last_week_data[selected_columns]
+
+        new_table = new_table.iloc[-5:]
+
+        new_table['Protein (g)'] *= 4
+        new_table['Fat (g)'] *= 9
+        new_table['Carbohydrates (g)'] *= 4
+
+
+        new_table2 = new_table.iloc[-5:]
+        
+
+        prot_lw = last_week_data['Protein (g)']
+        fat_lw = last_week_data['Fat (g)']
+        carbs_lw = last_week_data['Carbohydrates (g)']
+
+        dw=last_week_data['DayOfWeek']
+
+        number_sentences = 3
+        max_tokens = 300
+
+        # Create a figure and set the figure size
+        plt.figure(figsize=(10, 5))
+        fig10, ax10 = plt.subplots()
+
+        fig10.patch.set_facecolor('#d3d3d3')
+        ax10.set_facecolor('#000')
+        
+        ncolors = len(plt.rcParams['axes.prop_cycle'])
+        shift = np.linspace(0, 6, ncolors, endpoint=False)
+
+        # Bar widthx
+        bar_width = 0.2
+
+        # Space between groups of bars
+        group_spacing = 0.2
+
+        # Create x-axis positions for the bars (0, 1, 2, 3, 4)
+        x = range(len(dw))
+
+        # Create bars for the values
+        plt.bar(x, prot_lw, width=bar_width, label='Protein', align='center',  color='#dbf58e')
+        plt.bar([i + group_spacing for i in x], carbs_lw, width=bar_width, label='Carbs', align='center',  color='#568265')
+        plt.bar([i + 2 * group_spacing for i in x], fat_lw, width=bar_width, label='Fats', align='center', color='#92c3a4')
+
+        # Set the x-axis positions for labels right under the bars
+        label_positions = [i + bar_width for i in x]
+
+
+        # Set x-axis labels
+        #plt.xticks(x, 'Protein')
+        #plt.xticks([i + group_spacing for i in x], 'Carbs')
+        #plt.xticks([i + 2 * group_spacing for i in x], 'Fats')
+        plt.xticks(label_positions, dw)
+
+        # Set y-axis label
+        plt.ylabel('Consumption (grams)')
+        plt.xlabel('Time (days)')
+
+        # Add a horizontal line at a minimum protein intake
+        plt.axhline(y=min_prot, color='#FB6E52', linestyle='--', label=f'Minimum protein consumption')
+
+        # Add a legend
+        plt.legend(loc="upper left")
+                    
+        # Show the plot
+        plt.tight_layout()  # Adjust spacing for labels
+
+        display(fig10, target="graph_one")
+
+        prot_lw_cal = last_week_data['Protein (g)']*4
+        fat_lw_cal = last_week_data['Fat (g)']*9
+        carbs_lw_cal = last_week_data['Carbohydrates (g)']*4
+
+        # Create a figure and set the figure size
+        plt.figure(figsize=(10, 5), facecolor='#fff')
+        fig11, ax11 = plt.subplots(facecolor='#fff')
+        fig11.patch.set_facecolor('#d3d3d3')
+        ax11.set_facecolor('#000')
+
+        # Bar width
+        bar_width = 0.6
+
+        # Create x-axis positions for the bars (0, 1, 2, 3, 4)
+        x = np.arange(len(dw))
+
+        # Create bars for the values
+        plt.bar(x, prot_lw_cal, width=bar_width, label='Proteins', edgecolor='white', color='#dbf58e')
+        plt.bar(x, fat_lw_cal, width=bar_width, bottom=prot_lw_cal, label='Fats', edgecolor='white', color='#92c3a4')
+        plt.bar(x, carbs_lw_cal, width=bar_width, bottom=np.array(prot_lw_cal) + np.array(fat_lw_cal), label='Carbs', edgecolor='white', color='#568265')
+
+        # Set the x-axis positions for labels right under the bars
+        label_positions = x + .0005 * bar_width
+
+        # Set x-axis labels
+        plt.xticks(label_positions, dw,)  # Center the labels
+
+        # Add a horizontal line at a minimum protein intake
+        plt.axhline(y=min_cal, color='#FB6E52', linestyle='--', label=f'Minimum calorie consumption')
+
+        # Add labels and title
+        plt.xlabel('Time (days)')  # Set text color to white
+        plt.ylabel('Consumption (calories)')  # Set text color to white
+
+        # Add a legend
+        plt.legend(loc="upper left")
+        display(fig11, target="graph_two")
+
+
+
+
+    </py-script>
+
+    <script>
+        const toggleBtn =document.querySelector('.toggle_btn')
+        const toggleBtnIcon =document.querySelector('.toggle_btn i')
+        const dropDownMenu =document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open')
+            const isOpen =  dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList =isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
+    </script>
+    <footer>
+        <div class="footbar">
+            <li><a href="./index.html"> <i class="fa-solid fa-house" style="color: #1a0a53;"></i></a></li>     
+            <li> <a href="./mid.html"> <i class="fa-solid fa-dumbbell" style="color: #1a0a53;"></i></a> </li>
+            <li><i class="fa-solid fa-music" style="color: #1a0a53;"></i></li>  
+        </div>
+
+    </footer>
+</body>
+</html>

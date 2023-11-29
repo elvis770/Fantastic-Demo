@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+    <link rel="stylesheet" href="chart_styles.css">
+    
+    <title>Finntastic</title>
+</head>
+<body>
+    
+    <header>
+        <div class="navbar">
+            <div class="logo"> <a href="./index.html"> Finntastic </a></div>
+
+            <ul class="links">
+                <li><a href="./hero.html"><i class="fa-regular fa-user" style="color: #1a0a53;"></i></a></li>
+                <li><a href="./mid.html"><i class="fa-solid fa-dumbbell" style="color: #1a0a53;"></i> </a></li>
+                <li><a href="./music.html"><i class="fa-solid fa-music" style="color: #1a0a53;"></i></a></li>
+            </ul>
+
+            <a href="#" class="action_btn">Get Started</a>
+            <div class="toggle_btn">
+                <i  class="fa-solid fa-bars" style="color: #1a0a53;"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="./hero.html"><i class="fa-regular fa-user" style="color: #1a0a53;"></i> User</a></li>
+            <li><a href="music"><i class="fa-solid fa-phone" style="color: #1a0a53;"></i> Call</a></li>
+            <li><a href="help"><i class="fa-solid fa-info" style="color: #1a0a53;"></i> Help</a></li>
+            <li><a href="#" class="action_btn">click me</a></li>
+        </div>
+    </header>
+    <main>
+        <div class="playlist">
+            <div class="three">
+                <a href="./week1.html">
+                    <h1>
+                        Week 1
+                    </h1>
+                </a>
+            </div>
+            <div class="two">
+                <a href="./week2.html">
+                    <h1>
+                        Week 2
+                    </h1>
+                </a>
+            </div>
+            <div class="one">
+                <a href="./week3.html">
+                <h1>
+                    Week 3
+                </h1>
+                </a>
+            </div>
+            
+            <div class="four">
+                <a href="./week4.html">
+                    <h1>
+                        Week 4
+                    </h1>
+                    </a>
+            </div>
+            <div class="five">
+                <a href="./mid.html">
+                <h1>
+                    Week 5
+                </h1>
+                </a>
+            </div>
+        </div>
+        </div>
+    </main>
+   
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = toggleBtn.querySelector('i') // Select the 'i' element within toggleBtn
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
+    </script>
+   
+    <footer>
+        <div class="footbar">
+            <li><a href="./index.html"> <i id="1" class="fa-solid fa-house" style="color: #1a0a53;"></i></a></li>
+            <li><a href="./mid.html"> <i id="1" class="fa-solid fa-dumbbell" style="color: #1a0a53;"></i> </a></li>
+            <li><i class="fa-solid fa-music" style="color: #1a0a53;"></i></li>  
+        </div>
+    </footer>
+</body>
+</html>

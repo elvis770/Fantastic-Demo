@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Monserrat', sans-serif;
+}
+body{
+    height: 100vh;
+    background-color: #d3d3d3;
+}
+header{
+    position: relative;
+    background-color: #fff;
+}
+.navbar{
+    width: 100%;
+    height: 60px; 
+    max-width: 1200px;
+    padding-top: 15px;
+    margin: 0 auto;
+    
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.navbar .logo a{
+    font-size: 2.5rem;
+    color: #000;
+    font-weight: bold;
+    
+    text-decoration: none;
+    
+}
+li{
+    list-style: none;
+}
+section{
+    margin: 0;
+    padding-top: 70px;
+    text-align: center;
+}
+.wrapper{
+    display: flex;
+    align-items: end;
+    justify-content:center;
+}
+.logo{
+    margin: 0;
+    padding: 0;
+    height: 60px;
+    color: #1a0a53;
+}
+#dataForm{
+    display: inline-block;
+}
+.partOne,
+.partTwo,
+.partThree,
+.partFour,
+.partFive,
+.partfive,
+.partSix,
+.finalpart {
+    flex: 1;
+    text-align: center; /* Center-align the boxes within their containers */
+}
+input[type="text"] {
+    text-align: center;
+    width: 500px; 
+    height: 50px;/* Set the width of the input boxes to 200px */
+    margin: 5px; /* Add some margin for spacing */
+    padding: 10px; /* Add padding to improve the appearance */
+    box-sizing: border-box; /* Include padding in the width */
+    border-radius: 5px;
+    color: #fff;
+    background-color: #000;
+}
+input[type="button"]{
+    text-align: center;
+    font-weight: 500;
+    width: 500px; 
+    height: 50px;/* Set the width of the input boxes to 200px */
+    margin: 5px; /* Add some margin for spacing */
+    padding: 10px; /* Add padding to improve the appearance */
+    box-sizing: border-box; /* Include padding in the width */
+    border-radius: 5px;
+    color: #fff;
+    background-color: #000;
+}
+.saved{
+    display: none;
+}
+
+button {
+    padding: 10px;
+}
+
+footer{
+    display: none;
+}
+@media(max-width: 992px){
+    .navbar{
+       padding: 20px 20px 20px 20px;
+    }
+}
+@media(max-width: 1250px){
+    .navbar{
+       padding: 20px 20px 20px 20px;
+    }
+
+    footer{
+        margin: 0;
+        padding:1.5rem;
+        display: block;
+        background-color: #fff;
+    }
+    .footbar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

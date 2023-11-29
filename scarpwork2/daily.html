@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" 
+    />
+    <link rel="stylesheet" href="daily_styles.css">
+    
+    <title>Finntastic</title>
+</head>
+<body>
+    
+    <header>
+        <div class="navbar">
+            <div class="logo"> <a href="./index.html"> Finntastic </a></div>
+
+            <ul class="links">
+                <li><a href="./hero.html"><i class="fa-regular fa-user" style="color: #1a0a53;"></i></a></li>
+                <li><a href="./mid.html"><i class="fa-solid fa-dumbbell" style="color: #1a0a53;"></i> </a></li>
+                <li><a href="./music.html"><i class="fa-solid fa-music" style="color: #1a0a53;"></i></a></li>
+            </ul>
+
+            <a href="#" class="action_btn">Get Started</a>
+            <div class="toggle_btn">
+                <i  class="fa-solid fa-bars" style="color: #1a0a53;"></i>
+            </div>
+        </div>
+        <div class="dropdown_menu">
+            <li><a href="./hero.html"><i class="fa-regular fa-user" style="color: #1a0a53;"></i> User</a></li>
+            <li><a href="music"><i class="fa-solid fa-phone" style="color: #1a0a53;"></i> Call</a></li>
+            <li><a href="help"><i class="fa-solid fa-info" style="color: #1a0a53;"></i> Help</a></li>
+            <li><a href="#" class="action_btn">click me</a></li>
+        </div>
+    </header>
+    <main>
+        <section id="hero">
+            <div class="songList">
+                <h1>Daily Updates</h1>
+                <div class="songItemContainer">
+                    <div class="songItem">
+                        <img src="/Users/elvisechefu/Desktop/scarpwork2/images2/Baby_Keem_and_Kendrick_Lamar_-_Family_Ties.png" alt="1">
+                        <span class="songName">Day 1 - Total Summary Update</span>
+                        <span class="songListPlay"><span class="timestamp">05:35  <i id="0" class="fa-regular songItemPlay  fa-circle-play" style="color: #000;"></i></span></span>
+                    </div>
+                    <div class="songItem">
+                        <img src="/Users/elvisechefu/Desktop/scarpwork2/images2/Baby_Keem_and_Kendrick_Lamar_-_Family_Ties.png" alt="1">
+                        <span class="songName">Day 1 - Total Summary Update</span>
+                        <span class="songListPlay"><span class="timestamp">05:35  <i id="1" class="fa-regular songItemPlay  fa-circle-play" style="color: #000;"></i></span></span>
+                    </div>
+                    <div class="songItem">
+                        <img src="/Users/elvisechefu/Desktop/scarpwork2/images2/Baby_Keem_and_Kendrick_Lamar_-_Family_Ties.png" alt="1">
+                        <span class="songName">Day 1 - Total Summary Update</span>
+                        <span class="songListPlay"><span class="timestamp">05:35  <i id="2" class="fa-regular songItemPlay  fa-circle-play" style="color: #000;"></i></span></span>
+                    </div>
+                    <div class="songItem">
+                        <img src="/Users/elvisechefu/Desktop/scarpwork2/images2/Baby_Keem_and_Kendrick_Lamar_-_Family_Ties.png" alt="1">
+                        <span class="songName">Day 1 - Total Summary Update</span>
+                        <span class="songListPlay"><span class="timestamp">05:35  <i id="3" class="fa-regular songItemPlay  fa-circle-play" style="color: #000;"></i></span></span>
+                    </div>
+                    <div class="songItem">
+                        <img src="/Users/elvisechefu/Desktop/scarpwork2/images2/Baby_Keem_and_Kendrick_Lamar_-_Family_Ties.png" alt="1">
+                        <span class="songName">Day 1 - Total Summary Update</span>
+                        <span class="songListPlay"><span class="timestamp">05:35  <i id="4" class="fa-regular songItemPlay  fa-circle-play" style="color: #000;"></i></span></span>
+                    </div>
+                    <div class="songItem">
+                        <img src="/Users/elvisechefu/Desktop/scarpwork2/images2/Baby_Keem_and_Kendrick_Lamar_-_Family_Ties.png" alt="1">
+                        <span class="songName">Day 1 - Total Summary Update</span>
+                        <span class="songListPlay"><span class="timestamp">05:35  <i id="5" class="fa-regular songItemPlay  fa-circle-play" style="color: #000;"></i></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="songBanner"></div>
+            
+        </section>
+        <div class="bottom">
+            <input type="range" name="range" id="myProgressBar" min="0" value="0" max="100">
+            <div class="icons">
+                <i  class="fa-solid fa-2x fa-backward" style="color: #fff;" id="previous"></i>
+                <i  class="fa-regular fa-2x  fa-circle-play" style="color: #fff;" id="masterPlay"></i>
+                <i  class="fa-solid fa-2x  fa-forward" style="color: #d3d3d3;" id="next"></i>
+            </div>
+            <div class="songInfo">
+                <img src="https://i.gifer.com/origin/78/78270fde30bdca8fec52f86bfa7cab0c_w200.gif" height="30px" alt="" id="gif">  <span id="masterSongName">Day 1 - Total Summary Update</span>
+            </div>
+        </div>
+            
+
+
+        
+    </main>
+   
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = toggleBtn.querySelector('i') // Select the 'i' element within toggleBtn
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+        }
+    
+
+        // intializer the variables 
+        let songIndex = 0;
+        let audioElement = new Audio('audio4/1.mp3');
+        // let masterPlay = document.getElementById('masterPlayBtn');
+        let myProgressBar = document.getElementById('myProgressBar');
+        let gif = document.getElementById('gif');
+        let masterSongName = document.getElementById('masterSongName');
+        let songItems = Array.from(document.getElementsByClassName('songItem'));
+        
+
+
+        let songs =[
+            {songName: "Day 1 - Total Summary Update", filePath: "audio4/1.mp3", coverPath:"image4/1.jpeg"},
+            {songName: "Day 2 - Total Summary Update", filePath: "audio4/2.mp3", coverPath:"image4/2.jpeg"},
+            {songName: "Day 3 - Total Summary Update", filePath: "audio4/3.mp3", coverPath:"image4/3.webp"},
+            {songName: "Day 4 - Total Summary Update", filePath: "audio4/4.mp3", coverPath:"image4/4.jpeg"},
+            {songName: "Day 5 - Total Summary Update", filePath: "audio4/5.mp3", coverPath:"image4/5.webp"},
+            {songName: "Day 6 - Total Summary Update", filePath: "audio4/6.mp3", coverPath:"image4/6.webp"}
+        ]
+        songItems.forEach((element, i)=>{
+            element.getElementsByTagName("img")[0].src = songs[i].coverPath;
+            element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
+
+        })
+        // audioElement.play()
+        // Handle play/pause click
+        
+        const masterPlay = document.getElementById('masterPlay')
+
+        masterPlay.addEventListener('click',()=>{
+            if(audioElement.paused || audioElement.currentTime<=0){
+                audioElement.play();
+                masterPlay.classList.remove('fa-circle-play');
+                masterPlay.classList.add('fa-circle-pause');
+                gif.style.opacity = 1;
+            }
+            else{
+                audioElement.pause();
+                masterPlay.classList.remove('fa-circle-pause');
+                masterPlay.classList.add('fa-circle-play');
+                gif.style.opacity = 0;
+            }
+        })
+       
+        //Listen to events 
+        audioElement.addEventListener('timeupdate', ()=>{
+            console.log('timeupdate')
+            // update seekbar
+            progess = parseInt((audioElement.currentTime/audioElement.duration)* 100);
+            myProgressBar.value = progess;
+        })
+        myProgressBar.addEventListener('change', ()=>{
+            audioElement.currentTime = myProgressBar.value * audioElement.duration/100;
+        })
+        const makeAllPlays = ()=>{
+            Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
+                element.classList.remove('fa-circle-pause');
+                element.classList.add('fa-circle-play');
+            })
+        }
+        Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
+            element.addEventListener('click', (e)=>{
+                makeAllPlays();
+                songIndex = parseInt(e.target.id);
+                e.target.classList.remove('fa-circle-play');
+                e.target.classList.add('fa-circle-pause');
+                audioElement.src = `audio4/${songIndex+1}.mp3`;
+                masterSongName.innerText = songs[songIndex].songName;
+                audioElement.currentTime = 0;
+                audioElement.play();
+                gif.style.opacity = 1;
+                masterPlay.classList.remove('fa-circle-play');
+                masterPlay.classList.add('fa-circle-pause');
+            })
+        })
+        document.getElementById('next').addEventListener('click', ()=>{
+            if(songIndex>=9){
+                songIndex = 0
+            }
+            else{
+                songIndex += 1;
+            }
+            audioElement.src = `audio4/${songIndex+1}.mp3`;
+            masterSongName.innerText = songs[songIndex].songName;
+            audioElement.currentTime = 0;
+            audioElement.play();
+            masterPlay.classList.remove('fa-circle-play');
+            masterPlay.classList.add('fa-circle-pause');
+        })
+        document.getElementById('previous').addEventListener('click', ()=>{
+            if(songIndex<= 0){
+                songIndex = 0
+            }
+            else{
+                songIndex -= 1;
+            }
+            audioElement.src = `audio4/${songIndex+1}.mp3`;
+            masterSongName.innerText = songs[songIndex].songName;
+            audioElement.currentTime = 0;
+            audioElement.play();
+            masterPlay.classList.remove('fa-circle-play');
+            masterPlay.classList.add('fa-circle-pause');
+        })
+    </script>
+   
+    <footer>
+        <div class="footbar">
+            <li><a href="./index.html"> <i id="1" class="fa-solid fa-house" style="color: #1a0a53;"></i></a></li>
+            <li><a href="./mid.html"> <i id="1" class="fa-solid fa-dumbbell" style="color: #1a0a53;"></i> </a></li>
+            <li><i class="fa-solid fa-music" style="color: #1a0a53;"></i></li>  
+        </div>
+    </footer>
+</body>
+</html>
